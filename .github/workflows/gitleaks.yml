@@ -1,14 +1,15 @@
 name: gitleaks
 
-on: [push,pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   gitleaks:
     runs-on: ubuntu-latest
     steps:
-    - name: Code Checkout
-      uses: actions/checkout@v1
-    - name: Git Leaks
-      uses: GiriRaj249/gitleaks-action@main
-      with:
-        config-path: gitleaks-action/.gitleaks.toml
+      - uses: actions/checkout@v1
+      - name: gitleaks-action with defaults
+        uses: GiriRaj249/gitleaks-action@main
+      - name: gitleaks-action with config
+        uses: GiriRaj249/gitleaks-action@main
+        with:
+          config-path: .gitleaks.yml
