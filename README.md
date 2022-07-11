@@ -10,4 +10,5 @@ twitter_url?: NullableStringFieldUpdateOperationsInp
 xs
 jj
 xvxv
+ NullableStringFieldUpdateOperationsInp
 AKIAJFBKDBKJDKFKJFJKDSJ
