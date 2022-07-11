@@ -1,15 +1,14 @@
 name: gitleaks
-
-on: [push, pull_request, workflow_dispatch]
-
+on: [pull_request, push, workflow_dispatch]
 jobs:
-  gitleaks:
+  scan:
+    name: gitleaks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: gitleaks-action with defaults
-        uses: GiriRaj249/gitleaks-actions@main
-      - name: gitleaks-action with config
-        uses: GiriRaj249/gitleaks-actions@main
+      - uses: actions/checkout@v3
         with:
-          config-path: .gitleaks.yml
+          fetch-depth: 0
+      - uses: GiriRaj249/git-leaks@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}}
